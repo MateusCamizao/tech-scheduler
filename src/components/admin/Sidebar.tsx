@@ -1,9 +1,11 @@
 import {
+
   LayoutDashboard,
   CalendarDays,
   Clock3,
   Users,
   Settings,
+
 } from "lucide-react"
 
 import {
@@ -49,13 +51,13 @@ export function Sidebar() {
 
     <aside
       className="
-        w-[260px]
+        w-[280px]
         min-h-screen
 
         border-r
         border-border
 
-        bg-backgroundSecondary
+        bg-surface1
 
         px-5
         py-6
@@ -87,6 +89,7 @@ export function Sidebar() {
         <span
           className="
             text-sm
+
             text-textSecondary
           "
         >
@@ -103,6 +106,8 @@ export function Sidebar() {
           flex-col
 
           gap-2
+
+          flex-1
         "
       >
 
@@ -132,8 +137,10 @@ export function Sidebar() {
 
                 gap-3
 
+                font-medium
+
                 transition-all
-                duration-300
+                duration-200
 
                 ${
                   isActive
@@ -143,6 +150,7 @@ export function Sidebar() {
                     `
                     : `
                       text-textSecondary
+
                       hover:bg-hover
                       hover:text-text
                     `
@@ -152,18 +160,39 @@ export function Sidebar() {
 
               <Icon size={20} />
 
-              <span
-                className="
-                  font-semibold
-                "
-              >
+              <span>
                 {item.label}
               </span>
 
             </NavLink>
           )
         })}
+
       </nav>
+
+      {/* FOOTER */}
+
+      <div
+        className="
+          pt-6
+          mt-auto
+
+          border-t
+          border-border
+        "
+      >
+
+        <span
+          className="
+            text-sm
+
+            text-muted
+          "
+        >
+          v1.0.0
+        </span>
+
+      </div>
 
     </aside>
   )

@@ -1,23 +1,32 @@
 import {
+
   Calendar,
   Home,
   LogOut,
   Settings,
   Users,
+
 } from "lucide-react"
 
 import {
+
   NavLink,
   useNavigate,
+
 } from "react-router-dom"
 
-import { useAuth } from "@/contexts/AuthContext"
+import {
+  useAuth,
+} from "@/contexts/AuthContext"
 
 export function Sidebar() {
 
-  const navigate = useNavigate()
+  const navigate =
+    useNavigate()
 
-  const { signOut } = useAuth()
+  const {
+    signOut,
+  } = useAuth()
 
   function handleLogout() {
 
@@ -26,43 +35,109 @@ export function Sidebar() {
     navigate("/login")
   }
 
+  const itemClass = ({
+    isActive,
+  }: {
+    isActive: boolean
+  }) => `
+
+    flex
+    items-center
+
+    gap-3
+
+    p-3
+
+    rounded-2xl
+
+    transition-all
+    duration-200
+
+    font-medium
+
+    ${
+      isActive
+        ? `
+          bg-primary
+          text-white
+        `
+        : `
+          text-textSecondary
+
+          hover:bg-hover
+          hover:text-text
+        `
+    }
+  `
+
   return (
+
     <aside
       className="
         w-72
         min-h-screen
-        bg-card
+
+        bg-backgroundSecondary
+
         border-r
         border-border
+
         p-6
+
         flex
         flex-col
       "
     >
 
-      <h1 className="text-2xl font-bold text-primary mb-10">
-        Scheduler
-      </h1>
+      {/* LOGO */}
 
-      <nav className="flex flex-col gap-2 flex-1">
+      <div
+        className="
+          mb-10
+        "
+      >
+
+        <h1
+          className="
+            text-2xl
+            font-black
+
+            text-text
+          "
+        >
+          Scheduler
+        </h1>
+
+        <p
+          className="
+            mt-1
+
+            text-sm
+
+            text-textSecondary
+          "
+        >
+          Management Panel
+        </p>
+
+      </div>
+
+      {/* NAVIGATION */}
+
+      <nav
+        className="
+          flex
+          flex-col
+
+          gap-2
+
+          flex-1
+        "
+      >
 
         <NavLink
           to="/"
-          className={({ isActive }) =>
-            `
-            flex
-            items-center
-            gap-3
-            p-3
-            rounded-xl
-            transition
-
-            ${isActive
-              ? "bg-primary text-text"
-              : "hover:bg-background"
-            }
-          `
-          }
+          className={itemClass}
         >
           <Home size={20} />
           Home
@@ -70,21 +145,7 @@ export function Sidebar() {
 
         <NavLink
           to="/schedule"
-          className={({ isActive }) =>
-            `
-            flex
-            items-center
-            gap-3
-            p-3
-            rounded-xl
-            transition
-
-            ${isActive
-              ? "bg-primary text-text"
-              : "hover:bg-background"
-            }
-          `
-          }
+          className={itemClass}
         >
           <Calendar size={20} />
           Agendamentos
@@ -92,21 +153,7 @@ export function Sidebar() {
 
         <NavLink
           to="/admin"
-          className={({ isActive }) =>
-            `
-            flex
-            items-center
-            gap-3
-            p-3
-            rounded-xl
-            transition
-
-            ${isActive
-              ? "bg-primary text-text"
-              : "hover:bg-background"
-            }
-          `
-          }
+          className={itemClass}
         >
           <Users size={20} />
           Admin
@@ -114,43 +161,57 @@ export function Sidebar() {
 
         <NavLink
           to="/settings"
-          className={({ isActive }) =>
-            `
-            flex
-            items-center
-            gap-3
-            p-3
-            rounded-xl
-            transition
-
-            ${isActive
-              ? "bg-primary text-text"
-              : "hover:bg-background"
-            }
-          `
-          }
+          className={itemClass}
         >
           <Settings size={20} />
-          Settings
+          Configurações
         </NavLink>
 
       </nav>
 
-      <button
-        onClick={handleLogout}
+      {/* FOOTER */}
+
+      <div
         className="
-          flex
-          items-center
-          gap-3
-          p-3
-          rounded-xl
-          hover:bg-danger
-          transition
+          pt-6
+
+          border-t
+          border-border
         "
       >
-        <LogOut size={20} />
-        Sair
-      </button>
+
+        <button
+
+          onClick={handleLogout}
+
+          className="
+            w-full
+
+            flex
+            items-center
+
+            gap-3
+
+            p-3
+
+            rounded-2xl
+
+            text-dangerText
+
+            hover:bg-dangerBg
+
+            transition-all
+            duration-200
+          "
+        >
+
+          <LogOut size={20} />
+
+          Sair
+
+        </button>
+
+      </div>
 
     </aside>
   )

@@ -12,13 +12,15 @@ import {
 export function AdminHeader() {
 
   return (
-    
+
     <header
       className="
         h-[80px]
 
         border-b
         border-border
+
+        bg-surface1
 
         px-8
 
@@ -76,7 +78,11 @@ export function AdminHeader() {
 
             text-text
 
+            placeholder:text-textSecondary
+
             focus:border-primary
+
+            transition-all
           "
         />
 
@@ -92,9 +98,12 @@ export function AdminHeader() {
           gap-4
         "
       >
-          {/* THEME */}
 
-      <ThemeToggle />
+        {/* THEME */}
+
+        <ThemeToggle />
+
+        {/* NOTIFICATION */}
 
         <button
           className="
@@ -106,12 +115,13 @@ export function AdminHeader() {
             border
             border-border
 
-            bg-input
+            bg-surface2
 
             flex
             items-center
             justify-center
 
+            hover:bg-hover
             hover:border-primary
 
             transition-all
@@ -127,6 +137,8 @@ export function AdminHeader() {
 
         </button>
 
+        {/* AVATAR */}
+
         <div
           className="
             w-[46px]
@@ -140,7 +152,7 @@ export function AdminHeader() {
             items-center
             justify-center
 
-            text-text
+            text-white
             font-bold
           "
         >

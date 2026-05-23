@@ -1,5 +1,6 @@
-import { ReactNode }
-from "react"
+import {
+  ReactNode,
+} from "react"
 
 import {
   Sidebar,
@@ -30,7 +31,11 @@ export function AdminLayout({
       "
     >
 
+      {/* SIDEBAR */}
+
       <Sidebar />
+
+      {/* CONTENT */}
 
       <main
         className="
@@ -38,10 +43,16 @@ export function AdminLayout({
 
           flex
           flex-col
+
+          bg-background
         "
       >
 
+        {/* HEADER */}
+
         <AdminHeader />
+
+        {/* PAGE CONTENT */}
 
         <div
           className="

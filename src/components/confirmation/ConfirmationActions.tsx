@@ -1,13 +1,21 @@
-import { Check } from "lucide-react"
+import {
+  Check,
+} from "lucide-react"
 
-import { Input } from "@/components/ui/Input"
-import { Button } from "@/components/ui/Button"
+import {
+  Input,
+} from "@/components/ui/Input"
+
+import {
+  Button,
+} from "@/components/ui/Button"
 
 import {
   formatPhone,
 } from "@/utils/formatPhone"
 
 type Props = {
+
   name: string
   setName: (value: string) => void
 
@@ -26,6 +34,7 @@ type Props = {
 }
 
 export function ConfirmationActions({
+
   name,
   setName,
 
@@ -41,6 +50,7 @@ export function ConfirmationActions({
   canConfirm,
 
   onConfirm,
+
 }: Props) {
 
   return (
@@ -49,7 +59,7 @@ export function ConfirmationActions({
       className="
         flex-1
 
-        bg-card
+        bg-surface1
 
         border
         border-border
@@ -57,6 +67,8 @@ export function ConfirmationActions({
         rounded-[32px]
 
         p-7
+
+        shadow-sm
       "
     >
 
@@ -64,45 +76,112 @@ export function ConfirmationActions({
         className="
           flex
           flex-col
+
           gap-5
         "
       >
 
-        <Input
-          label="Nome completo"
-          placeholder="Digite seu nome"
-          value={name}
-          onChange={(e) =>
-            setName(e.target.value)
-          }
-        />
+        {/* NAME */}
 
-        <Input
-          label="Telefone"
-          placeholder="(11) 99999-9999"
-          value={phone}
-          onChange={(e) =>
-            setPhone(
-              formatPhone(
-                e.target.value,
-              ),
-            )
-          }
-        />
+        <div>
 
-        <Input
-          label="E-mail"
-          placeholder="seuemail@empresa.com"
-          value={email}
-          onChange={(e) =>
-            setEmail(e.target.value)
-          }
-        />
+          <label
+            className="
+              mb-2
+
+              block
+
+              text-sm
+
+              text-textSecondary
+            "
+          >
+            Nome completo
+          </label>
+
+          <Input
+            placeholder="Digite seu nome"
+
+            value={name}
+
+            onChange={(e) =>
+              setName(e.target.value)
+            }
+          />
+
+        </div>
+
+        {/* PHONE */}
+
+        <div>
+
+          <label
+            className="
+              mb-2
+
+              block
+
+              text-sm
+
+              text-textSecondary
+            "
+          >
+            Telefone
+          </label>
+
+          <Input
+            placeholder="(11) 99999-9999"
+
+            value={phone}
+
+            onChange={(e) =>
+              setPhone(
+                formatPhone(
+                  e.target.value,
+                ),
+              )
+            }
+          />
+
+        </div>
+
+        {/* EMAIL */}
+
+        <div>
+
+          <label
+            className="
+              mb-2
+
+              block
+
+              text-sm
+
+              text-textSecondary
+            "
+          >
+            E-mail
+          </label>
+
+          <Input
+            placeholder="seuemail@empresa.com"
+
+            value={email}
+
+            onChange={(e) =>
+              setEmail(e.target.value)
+            }
+          />
+
+        </div>
+
+        {/* TERMS */}
 
         <label
           className="
             flex
             items-center
+
             gap-4
 
             pt-2
@@ -112,10 +191,15 @@ export function ConfirmationActions({
         >
 
           <button
+
             type="button"
+
+            aria-checked={acceptTerms}
+
             onClick={() =>
               setAcceptTerms(!acceptTerms)
             }
+
             className={`
               w-7
               h-7
@@ -129,24 +213,31 @@ export function ConfirmationActions({
               justify-center
 
               transition-all
+              duration-200
 
               ${
                 acceptTerms
                   ? `
-                    bg-green-500
-                    border-green-400
+                    bg-successBg
+
+                    border-successBorder
+
+                    text-successText
                   `
                   : `
                     border-border
-                    bg-background
+
+                    bg-surface2
                   `
               }
             `}
           >
 
-            {acceptTerms && (
-              <Check size={16} />
-            )}
+            {
+              acceptTerms && (
+                <Check size={16} />
+              )
+            }
 
           </button>
 
@@ -161,6 +252,8 @@ export function ConfirmationActions({
 
         </label>
 
+        {/* ACTION */}
+
         <div
           className="
             flex
@@ -171,43 +264,26 @@ export function ConfirmationActions({
         >
 
           <Button
+            variant={
+              canConfirm? "success": "primary"
+          }
             title="Confirmar Agendamento"
+
             onClick={onConfirm}
+
             disabled={!canConfirm}
-            className={`
-              w-[420px]
+
+            className="
+              w-full
+              max-w-[420px]
+
               h-[72px]
 
               rounded-[24px]
 
               text-[22px]
               font-black
-
-              transition-all
-              duration-200
-
-              ${
-                canConfirm
-                  ? `
-                    bg-green-500
-
-                    hover:bg-green-400
-
-                    hover:scale-[1.01]
-
-                    active:scale-[0.98]
-
-                    shadow-lg
-                    shadow-green-500/20
-                  `
-                  : `
-                    bg-zinc-700
-                    text-textSecondary
-
-                    cursor-not-allowed
-                  `
-              }
-            `}
+            "
           />
 
         </div>

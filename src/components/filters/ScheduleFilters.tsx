@@ -21,7 +21,7 @@ export function ScheduleFilters({
 
         z-50
 
-        bg-black/50
+        bg-overlay
 
         flex
         items-center
@@ -30,6 +30,8 @@ export function ScheduleFilters({
         p-4
       "
     >
+
+      {/* MODAL */}
 
       <div
         className="
@@ -41,7 +43,9 @@ export function ScheduleFilters({
           border
           border-border
 
-          bg-card
+          bg-surface1
+
+          shadow-xl
 
           p-7
         "
@@ -65,6 +69,8 @@ export function ScheduleFilters({
               className="
                 text-3xl
                 font-black
+
+                text-text
               "
             >
               Filtros
@@ -82,6 +88,8 @@ export function ScheduleFilters({
 
           </div>
 
+          {/* CLOSE */}
+
           <button
 
             onClick={onClose}
@@ -95,9 +103,19 @@ export function ScheduleFilters({
               border
               border-border
 
+              bg-surface2
+
+              text-text
+
+              flex
+              items-center
+              justify-center
+
+              hover:bg-hover
               hover:border-primary
 
               transition-all
+              duration-200
             "
           >
             ✕
@@ -125,6 +143,7 @@ export function ScheduleFilters({
             <label
               className="
                 text-sm
+
                 text-textSecondary
               "
             >
@@ -150,6 +169,13 @@ export function ScheduleFilters({
                 outline-none
 
                 text-text
+
+                transition-all
+                duration-200
+
+                focus:border-primary
+                focus:ring-2
+                focus:ring-primary/20
               "
             >
 
@@ -184,6 +210,7 @@ export function ScheduleFilters({
             <label
               className="
                 text-sm
+
                 text-textSecondary
               "
             >
@@ -209,6 +236,13 @@ export function ScheduleFilters({
                 outline-none
 
                 text-text
+
+                transition-all
+                duration-200
+
+                focus:border-primary
+                focus:ring-2
+                focus:ring-primary/20
               "
             >
 
@@ -239,6 +273,7 @@ export function ScheduleFilters({
             <label
               className="
                 text-sm
+
                 text-textSecondary
               "
             >
@@ -266,63 +301,15 @@ export function ScheduleFilters({
                 outline-none
 
                 text-text
+
+                transition-all
+                duration-200
+
+                focus:border-primary
+                focus:ring-2
+                focus:ring-primary/20
               "
             />
-
-          </div>
-
-          {/* DURAÇÃO */}
-
-          <div>
-
-            <label
-              className="
-                text-sm
-                text-textSecondary
-              "
-            >
-              Duração
-            </label>
-
-            <select
-              className="
-                mt-2
-
-                w-full
-                h-[52px]
-
-                rounded-2xl
-
-                border
-                border-border
-
-                bg-input
-
-                px-4
-
-                outline-none
-
-                text-text
-              "
-            >
-
-              <option>
-                Todas
-              </option>
-
-              <option>
-                30 min
-              </option>
-
-              <option>
-                60 min
-              </option>
-
-              <option>
-                90 min
-              </option>
-
-            </select>
 
           </div>
 
@@ -332,51 +319,59 @@ export function ScheduleFilters({
 
         <div
           className="
+            mt-8
+
             flex
             items-center
             justify-end
 
-            gap-4
-
-            mt-8
+            gap-3
           "
         >
 
           <button
-            className="
-              h-[48px]
+            onClick={onClose}
 
-              px-6
+            className="
+              h-[52px]
+
+              px-5
 
               rounded-2xl
 
               border
               border-border
 
-              hover:border-primary
+              bg-surface2
+
+              text-text
+
+              hover:bg-hover
 
               transition-all
+              duration-200
             "
           >
-            Limpar
+            Cancelar
           </button>
 
           <button
             className="
-              h-[48px]
+              h-[52px]
 
-              px-6
+              px-5
 
               rounded-2xl
 
               bg-primary
 
-              text-text
+              text-white
               font-semibold
 
-              hover:opacity-90
+              hover:bg-primaryHover
 
               transition-all
+              duration-200
             "
           >
             Aplicar filtros

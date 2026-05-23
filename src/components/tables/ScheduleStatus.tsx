@@ -13,56 +13,56 @@ const statusMap = {
 
     label: "Confirmado",
 
-    className:
-      `
-        bg-successBg
-        text-successText
+    className: `
+      bg-successBg
 
-        border
-        border-successBorder
-      `,
+      !text-successText
+
+      border
+      border-successBorder
+    `,
   },
 
   cancelled: {
 
     label: "Cancelado",
 
-    className:
-      `
-        bg-red-500/10
-        text-red-400
+    className: `
+      bg-dangerBg
 
-        border
-        border-red-500/20
-      `,
+      !text-dangerText
+
+      border
+      border-dangerBorder
+    `,
   },
 
   rescheduled: {
 
     label: "Reagendado",
 
-    className:
-      `
-        bg-yellow-500/10
-        text-yellow-400
+    className: `
+      bg-warningBg
 
-        border
-        border-yellow-500/20
-      `,
+      !text-warningText
+
+      border
+      border-warningBorder
+    `,
   },
 
   pending: {
 
     label: "Pendente",
 
-    className:
-      `
-        bg-blue-500/10
-        text-primary
+    className: `
+      bg-infoBg
 
-        border
-        border-blue-500/20
-      `,
+      !text-infoText
+
+      border
+      border-infoBorder
+    `,
   },
 }
 
@@ -87,9 +87,16 @@ export function ScheduleStatus({
         text-sm
         font-semibold
 
+        whitespace-nowrap
+
         flex
         items-center
         justify-center
+
+        shadow-sm
+
+        transition-all
+        duration-200
 
         ${current.className}
       `}

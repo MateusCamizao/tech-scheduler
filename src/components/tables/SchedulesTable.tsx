@@ -77,7 +77,9 @@ export function SchedulesTable() {
         border
         border-border
 
-        bg-card
+        bg-surface1
+
+        shadow-sm
       "
     >
 
@@ -96,6 +98,8 @@ export function SchedulesTable() {
 
           border-b
           border-border
+
+          bg-surface2
 
           text-sm
           font-semibold
@@ -160,11 +164,14 @@ export function SchedulesTable() {
 
               items-center
 
-              hover:bg-white/[0.02]
+              hover:bg-hover
 
               transition-all
+              duration-200
             "
           >
+
+            {/* CLIENT */}
 
             <strong
               className="
@@ -174,21 +181,43 @@ export function SchedulesTable() {
               {item.client}
             </strong>
 
-            <span>
+            {/* DATE */}
+
+            <span
+              className="
+                text-textSecondary
+              "
+            >
               {item.date}
             </span>
 
-            <span>
+            {/* HOUR */}
+
+            <span
+              className="
+                text-textSecondary
+              "
+            >
               {item.hour}
             </span>
 
-            <span>
+            {/* DURATION */}
+
+            <span
+              className="
+                text-textSecondary
+              "
+            >
               {item.duration} min
             </span>
+
+            {/* STATUS */}
 
             <ScheduleStatus
               status={item.status as any}
             />
+
+            {/* ACTIONS */}
 
             <ScheduleActions />
 

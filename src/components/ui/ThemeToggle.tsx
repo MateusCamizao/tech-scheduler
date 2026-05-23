@@ -22,6 +22,8 @@ export function ThemeToggle() {
 
       onClick={toggleTheme}
 
+      aria-label="Alternar tema"
+
       className="
         w-[46px]
         h-[46px]
@@ -31,15 +33,21 @@ export function ThemeToggle() {
         border
         border-border
 
-        bg-input
+        bg-surface2
+
+        shadow-sm
 
         flex
         items-center
         justify-center
 
+        hover:bg-hover
         hover:border-primary
 
+        active:scale-[0.98]
+
         transition-all
+        duration-200
       "
     >
 

@@ -1,9 +1,17 @@
-import type { ReactNode } from "react"
+import type {
+  ReactNode,
+} from "react"
 
-import { Header } from "./Header"
-import { Sidebar } from "./Sidebar"
+import {
+  Header,
+} from "./Header"
+
+import {
+  Sidebar,
+} from "./Sidebar"
 
 interface Props {
+
   children: ReactNode
 }
 
@@ -12,16 +20,54 @@ export function PrivateLayout({
 }: Props) {
 
   return (
-    <div className="flex bg-background text-textPrimary">
+
+    <div
+      className="
+        min-h-screen
+
+        flex
+
+        bg-background
+
+        text-text
+      "
+    >
+
+      {/* SIDEBAR */}
 
       <Sidebar />
 
-      <div className="flex-1 min-h-screen">
+      {/* CONTENT */}
+
+      <div
+        className="
+          flex-1
+
+          min-h-screen
+
+          flex
+          flex-col
+
+          bg-background
+        "
+      >
+
+        {/* HEADER */}
 
         <Header />
 
-        <main className="p-8">
+        {/* PAGE */}
+
+        <main
+          className="
+            flex-1
+
+            p-8
+          "
+        >
+
           {children}
+
         </main>
 
       </div>

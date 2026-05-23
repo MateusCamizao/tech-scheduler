@@ -5,15 +5,20 @@ import {
 } from "lucide-react"
 
 type Props = {
+
   selectedDate: Date
+
   selectedTime: string
+
   duration: number
 }
 
 export function ConfirmationCard({
+
   selectedDate,
   selectedTime,
   duration,
+
 }: Props) {
 
   return (
@@ -23,26 +28,33 @@ export function ConfirmationCard({
         w-[320px]
         min-h-[360px]
 
-        bg-card
+        bg-surface1
 
         border
         border-border
 
         rounded-[32px]
 
+        shadow-sm
+
         p-7
       "
     >
+
+      {/* HEADER */}
 
       <div
         className="
           flex
           items-start
+
           gap-4
 
           mb-10
         "
       >
+
+        {/* ICON */}
 
         <div
           className="
@@ -51,7 +63,7 @@ export function ConfirmationCard({
 
             rounded-[18px]
 
-            bg-background
+            bg-surface2
 
             border
             border-border
@@ -62,9 +74,16 @@ export function ConfirmationCard({
           "
         >
 
-          <CalendarDays size={26} />
+          <CalendarDays
+            size={26}
+            className="
+              text-primary
+            "
+          />
 
         </div>
+
+        {/* DATE */}
 
         <div>
 
@@ -72,7 +91,10 @@ export function ConfirmationCard({
             className="
               text-[28px]
               font-black
+
               leading-none
+
+              text-text
             "
           >
 
@@ -84,6 +106,7 @@ export function ConfirmationCard({
           <p
             className="
               text-textSecondary
+
               text-[20px]
 
               mt-2
@@ -98,20 +121,28 @@ export function ConfirmationCard({
 
       </div>
 
+      {/* CONTENT */}
+
       <div
         className="
           flex
           flex-col
-          gap-8
+
+          gap-7
         "
       >
+
+        {/* DURATION */}
 
         <div>
 
           <p
             className="
+              text-sm
+
               text-textSecondary
-              mb-1
+
+              mb-2
             "
           >
             Duração
@@ -120,6 +151,8 @@ export function ConfirmationCard({
           <strong
             className="
               text-[18px]
+
+              text-text
             "
           >
             {duration} minutos
@@ -127,12 +160,17 @@ export function ConfirmationCard({
 
         </div>
 
+        {/* TYPE */}
+
         <div>
 
           <p
             className="
+              text-sm
+
               text-textSecondary
-              mb-1
+
+              mb-2
             "
           >
             Tipo
@@ -141,6 +179,8 @@ export function ConfirmationCard({
           <strong
             className="
               text-[18px]
+
+              text-text
             "
           >
             Reunião Online
@@ -148,12 +188,17 @@ export function ConfirmationCard({
 
         </div>
 
+        {/* DATE TIME */}
+
         <div>
 
           <p
             className="
+              text-sm
+
               text-textSecondary
-              mb-1
+
+              mb-2
             "
           >
             Horário
@@ -162,6 +207,8 @@ export function ConfirmationCard({
           <strong
             className="
               text-[18px]
+
+              text-text
             "
           >
             {dayjs(selectedDate)

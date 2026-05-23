@@ -1,26 +1,81 @@
-import type { ReactNode } from "react"
+import type {
+  ReactNode,
+} from "react"
 
 interface CardProps {
+
   children: ReactNode
+
+  variant?:
+    | "default"
+    | "elevated"
+    | "outlined"
+    | "transparent"
+
+  className?: string
 }
 
 export function Card({
+
   children,
+
+  variant = "default",
+
+  className = "",
+
 }: CardProps) {
 
+  const variants = {
+
+    default: `
+      bg-surface1
+
+      border
+      border-border
+
+      shadow-sm
+    `,
+
+    elevated: `
+      bg-surface1
+
+      border
+      border-border
+
+      shadow-xl
+    `,
+
+    outlined: `
+      bg-transparent
+
+      border
+      border-border
+    `,
+
+    transparent: `
+      bg-transparent
+    `,
+  }
+
   return (
+
     <div
-      className="
-        bg-card/90
-        backdrop-blur-sm
-        border
-        border-border
+      className={`
         rounded-3xl
+
         p-8
-        shadow-2xl
-      "
+
+        transition-all
+        duration-200
+
+        ${variants[variant]}
+
+        ${className}
+      `}
     >
+
       {children}
+
     </div>
   )
 }

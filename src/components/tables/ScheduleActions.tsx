@@ -23,6 +23,27 @@ export function ScheduleActions({
 
 }: Props) {
 
+  const actionClass = `
+    w-[42px]
+    h-[42px]
+
+    rounded-xl
+
+    border
+    border-border
+
+    bg-surface2
+
+    flex
+    items-center
+    justify-center
+
+    hover:bg-hover
+
+    transition-all
+    duration-200
+  `
+
   return (
 
     <div
@@ -38,27 +59,15 @@ export function ScheduleActions({
 
       <button
 
+        aria-label="Visualizar"
+
         onClick={onView}
 
-        className="
-          w-[42px]
-          h-[42px]
-
-          rounded-xl
-
-          border
-          border-border
-
-          bg-input
-
-          flex
-          items-center
-          justify-center
+        className={`
+          ${actionClass}
 
           hover:border-primary
-
-          transition-all
-        "
+        `}
       >
 
         <Eye
@@ -74,33 +83,21 @@ export function ScheduleActions({
 
       <button
 
+        aria-label="Reagendar"
+
         onClick={onReschedule}
 
-        className="
-          w-[42px]
-          h-[42px]
+        className={`
+          ${actionClass}
 
-          rounded-xl
-
-          border
-          border-border
-
-          bg-input
-
-          flex
-          items-center
-          justify-center
-
-          hover:border-yellow-500
-
-          transition-all
-        "
+          hover:border-warningBorder
+        `}
       >
 
         <RotateCcw
           size={18}
           className="
-            text-yellow-400
+            text-warningText
           "
         />
 
@@ -110,33 +107,21 @@ export function ScheduleActions({
 
       <button
 
+        aria-label="Cancelar"
+
         onClick={onCancel}
 
-        className="
-          w-[42px]
-          h-[42px]
+        className={`
+          ${actionClass}
 
-          rounded-xl
-
-          border
-          border-border
-
-          bg-input
-
-          flex
-          items-center
-          justify-center
-
-          hover:border-red-500
-
-          transition-all
-        "
+          hover:border-dangerBorder
+        `}
       >
 
         <Trash2
           size={18}
           className="
-            text-red-400
+            text-dangerText
           "
         />
 

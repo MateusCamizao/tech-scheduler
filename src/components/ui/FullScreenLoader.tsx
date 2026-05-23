@@ -1,18 +1,50 @@
-import { Spinner } from "./Spinner"
+import {
+  Spinner,
+} from "./Spinner"
 
-export function FullScreenLoader() {
+interface FullScreenLoaderProps {
+
+  message?: string
+}
+
+export function FullScreenLoader({
+
+  message = "Carregando...",
+
+}: FullScreenLoaderProps) {
 
   return (
+
     <div
       className="
         min-h-screen
+
         flex
+        flex-col
+
         items-center
         justify-center
+
+        gap-5
+
         bg-background
       "
     >
-      <Spinner />
+
+      <Spinner
+        size="lg"
+      />
+
+      <span
+        className="
+          text-sm
+
+          text-textSecondary
+        "
+      >
+        {message}
+      </span>
+
     </div>
   )
 }
