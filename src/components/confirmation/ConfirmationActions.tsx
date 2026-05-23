@@ -202,7 +202,7 @@ export function ConfirmationActions({
                   `
                   : `
                     bg-zinc-700
-                    text-zinc-400
+                    text-textSecondary
 
                     cursor-not-allowed
                   `

@@ -18,9 +18,9 @@ export function Input(
         py-4
         outline-none
 
-        text-white
+        text-text
 
-        placeholder:text-gray-400
+        placeholder:text-textSecondary
 
         caret-white
 

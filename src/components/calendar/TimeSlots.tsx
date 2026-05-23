@@ -85,7 +85,7 @@ export function TimeSlots({
                   ? `
                     bg-primary
                     border-primary
-                    text-white
+                    text-text
                   `
                   : `
                     bg-card

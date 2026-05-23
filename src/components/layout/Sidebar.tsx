@@ -58,7 +58,7 @@ export function Sidebar() {
             transition
 
             ${isActive
-              ? "bg-primary text-white"
+              ? "bg-primary text-text"
               : "hover:bg-background"
             }
           `
@@ -80,7 +80,7 @@ export function Sidebar() {
             transition
 
             ${isActive
-              ? "bg-primary text-white"
+              ? "bg-primary text-text"
               : "hover:bg-background"
             }
           `
@@ -102,7 +102,7 @@ export function Sidebar() {
             transition
 
             ${isActive
-              ? "bg-primary text-white"
+              ? "bg-primary text-text"
               : "hover:bg-background"
             }
           `
@@ -124,7 +124,7 @@ export function Sidebar() {
             transition
 
             ${isActive
-              ? "bg-primary text-white"
+              ? "bg-primary text-text"
               : "hover:bg-background"
             }
           `

@@ -1,3 +1,7 @@
+import {
+  ThemeToggle,
+} from "@/components/ui/ThemeToggle"
+
 export function Header() {
   return (
     <header
@@ -17,6 +21,7 @@ export function Header() {
       </h2>
 
       <div className="flex items-center gap-4">
+        <ThemeToggle />
         <div
           className="
             w-10
@@ -26,6 +31,7 @@ export function Header() {
           "
         />
       </div>
+      
     </header>
   )
 }

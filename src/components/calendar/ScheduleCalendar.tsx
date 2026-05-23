@@ -276,9 +276,9 @@ export function ScheduleCalendar({
 
                 ${
                   isCurrentMonth
-                    ? "text-white"
+                    ? "text-text"
                     : `
-                      text-gray-600
+                      text-textSecondary
                       opacity-40
                     `
                 }
@@ -287,13 +287,13 @@ export function ScheduleCalendar({
                   isSelected
                     ? `
                       bg-primary
-                      text-white
+                      text-text
 
                       shadow-lg
                     `
                     : `
                       hover:bg-primary
-                      hover:text-white
+                      hover:text-text
                     `
                 }
 

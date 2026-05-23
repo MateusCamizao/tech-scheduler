@@ -28,7 +28,7 @@ export function Button({
         py-4
         rounded-2xl
         font-semibold
-        text-white
+        text-text
         shadow-lg
         disabled:opacity-50
         flex

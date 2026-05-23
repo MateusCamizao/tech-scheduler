@@ -50,7 +50,7 @@ export function DurationSelector({
                   ? `
                     bg-primary
                     border-primary
-                    text-white
+                    text-text
                     shadow-lg
                   `
                   : `
