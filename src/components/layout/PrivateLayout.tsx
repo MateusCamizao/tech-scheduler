@@ -42,7 +42,7 @@ export function PrivateLayout({
       <div
         className="
           flex-1
-
+          
           min-h-screen
 
           flex
@@ -61,7 +61,7 @@ export function PrivateLayout({
         <main
           className="
             flex-1
-
+            
             p-8
           "
         >

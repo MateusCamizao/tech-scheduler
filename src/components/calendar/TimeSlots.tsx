@@ -1,4 +1,5 @@
 interface Props {
+
   selectedTime: string | null
 
   onSelect: (
@@ -7,6 +8,7 @@ interface Props {
 }
 
 const times = [
+
   "08:00",
   "08:15",
   "08:30",
@@ -17,11 +19,14 @@ const times = [
 ]
 
 export function TimeSlots({
+
   selectedTime,
   onSelect,
+
 }: Props) {
 
   return (
+
     <div
       className="
         grid
@@ -45,6 +50,7 @@ export function TimeSlots({
         return (
 
           <button
+
             key={time}
 
             disabled={disabled}
@@ -59,37 +65,51 @@ export function TimeSlots({
               rounded-[18px]
 
               border
-              border-border
 
               text-[18px]
               font-semibold
 
               transition-all
+              duration-200
+
+              active:scale-[0.98]
+
+              focus:outline-none
 
               ${
                 disabled
                   ? `
-                    opacity-40
+                    bg-surface2
+
+                    border-border
+
+                    text-textMuted
+
                     cursor-not-allowed
+                  `
+                  : selected
+                    ? `
+                      bg-primary
 
-                    bg-card
-                  `
-                  : `
-                    hover:border-primary
-                    hover:bg-primary/10
-                  `
-              }
+                      border-primary
 
-              ${
-                selected
-                  ? `
-                    bg-primary
-                    border-primary
-                    text-text
-                  `
-                  : `
-                    bg-card
-                  `
+                      text-white
+
+                      shadow-lg
+                    `
+                    : `
+                      bg-surface1
+
+                      border-border
+
+                      text-text
+
+                      hover:border-primary
+
+                      hover:bg-hover
+
+                      hover:scale-[1.01]
+                    `
               }
             `}
           >

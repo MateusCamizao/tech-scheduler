@@ -62,7 +62,7 @@ export function Card({
     <div
       className={`
         rounded-3xl
-
+        
         p-8
 
         transition-all

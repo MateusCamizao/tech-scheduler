@@ -1,6 +1,3 @@
-import { useMemo, useState }
-from "react"
-
 import dayjs from "dayjs"
 
 import {
@@ -9,11 +6,13 @@ import {
 } from "lucide-react"
 
 import {
-  generateCalendar,
-} from "./calendar.utils"
+  useMemo,
+  useState,
+} from "react"
 
-interface Props {
-  selected: Date | undefined
+type Props = {
+
+  selectedDate: Date | null
 
   onSelect: (
     date: Date,
@@ -21,65 +20,171 @@ interface Props {
 }
 
 const weekDays = [
-  "Su",
-  "Mo",
-  "Tu",
-  "We",
-  "Th",
-  "Fr",
-  "Sa",
+  "Dom",
+  "Seg",
+  "Ter",
+  "Qua",
+  "Qui",
+  "Sex",
+  "Sáb",
 ]
 
 export function ScheduleCalendar({
-  selected,
+  selectedDate,
   onSelect,
 }: Props) {
 
   const [currentMonth, setCurrentMonth] =
     useState(dayjs())
 
+  /*
+  |----------------------------------------------------------------------
+  | DAYS
+  |----------------------------------------------------------------------
+  */
+
   const days = useMemo(() => {
 
-    return generateCalendar(
-      currentMonth,
-    )
+    const startOfMonth =
+      currentMonth.startOf("month")
+
+    const endOfMonth =
+      currentMonth.endOf("month")
+
+    const startDay =
+      startOfMonth.day()
+
+    const totalDays =
+      endOfMonth.date()
+
+    const previousMonth =
+      currentMonth.subtract(1, "month")
+
+    const previousMonthDays =
+      previousMonth.daysInMonth()
+
+    const result: {
+      date: Date
+      currentMonth: boolean
+    }[] = []
+
+    /*
+    |----------------------------------------------------------------------
+    | PREVIOUS MONTH
+    |----------------------------------------------------------------------
+    */
+
+    for (
+      let i = startDay - 1;
+      i >= 0;
+      i--
+    ) {
+
+      result.push({
+
+        date:
+          previousMonth
+            .date(previousMonthDays - i)
+            .toDate(),
+
+        currentMonth: false,
+      })
+    }
+
+    /*
+    |----------------------------------------------------------------------
+    | CURRENT MONTH
+    |----------------------------------------------------------------------
+    */
+
+    for (
+      let day = 1;
+      day <= totalDays;
+      day++
+    ) {
+
+      result.push({
+
+        date:
+          currentMonth
+            .date(day)
+            .toDate(),
+
+        currentMonth: true,
+      })
+    }
+
+    /*
+    |----------------------------------------------------------------------
+    | NEXT MONTH
+    |----------------------------------------------------------------------
+    */
+
+    const remaining =
+      42 - result.length
+
+    for (
+      let i = 1;
+      i <= remaining;
+      i++
+    ) {
+
+      result.push({
+
+        date:
+          currentMonth
+            .add(1, "month")
+            .date(i)
+            .toDate(),
+
+        currentMonth: false,
+      })
+    }
+
+    return result
 
   }, [currentMonth])
+
+  /*
+  |----------------------------------------------------------------------
+  | NAVIGATION
+  |----------------------------------------------------------------------
+  */
 
   function previousMonth() {
 
     setCurrentMonth(
-      currentMonth.subtract(
-        1,
-        "month",
-      ),
+      currentMonth.subtract(1, "month"),
     )
   }
 
   function nextMonth() {
 
     setCurrentMonth(
-      currentMonth.add(
-        1,
-        "month",
-      ),
+      currentMonth.add(1, "month"),
     )
   }
 
+  /*
+  |----------------------------------------------------------------------
+  | RENDER
+  |----------------------------------------------------------------------
+  */
+
   return (
+
     <div
       className="
-        bg-card
+        w-full
+
+        bg-surface1
+
         border
         border-border
 
-        rounded-[28px]
+        rounded-[32px]
 
-        px-6
-        py-5
-
-        w-full
-        max-w-[530px]
+        p-6
       "
     >
 
@@ -91,116 +196,133 @@ export function ScheduleCalendar({
           items-center
           justify-between
 
-          mb-6
+          mb-8
         "
       >
 
-        <h2
+        <button
+
+          onClick={previousMonth}
+
           className="
-            text-[38px]
-            leading-none
+            w-11
+            h-11
 
-            font-black
-          "
-        >
+            rounded-2xl
 
-          {currentMonth.format(
-            "MMMM YYYY",
-          )}
+            bg-surface2
 
-        </h2>
+            border
+            border-border
 
-        <div
-          className="
             flex
             items-center
-            gap-2
+            justify-center
+
+            hover:bg-hover
+            hover:border-primary
+
+            transition-all
+            duration-200
+
+            active:scale-[0.96]
           "
         >
 
-          <button
-            onClick={previousMonth}
-
+          <ChevronLeft
+            size={20}
             className="
-              h-10
-              w-10
-
-              rounded-2xl
-
-              border
-              border-border
-
-              bg-background
-
-              flex
-              items-center
-              justify-center
-
-              hover:border-primary
-              hover:bg-primary/10
-
-              transition-all
+              text-text
             "
-          >
+          />
 
-            <ChevronLeft size={16} />
+        </button>
 
-          </button>
+        <strong
+          className="
+            text-[22px]
+            font-black
 
-          <button
-            onClick={nextMonth}
+            text-text
+          "
+        >
 
+          {
+            currentMonth
+              .format("MMMM YYYY")
+          }
+
+        </strong>
+
+        <button
+
+          onClick={nextMonth}
+
+          className="
+            w-11
+            h-11
+
+            rounded-2xl
+
+            bg-surface2
+
+            border
+            border-border
+
+            flex
+            items-center
+            justify-center
+
+            hover:bg-hover
+            hover:border-primary
+
+            transition-all
+            duration-200
+
+            active:scale-[0.96]
+          "
+        >
+
+          <ChevronRight
+            size={20}
             className="
-              h-10
-              w-10
-
-              rounded-2xl
-
-              border
-              border-border
-
-              bg-background
-
-              flex
-              items-center
-              justify-center
-
-              hover:border-primary
-              hover:bg-primary/10
-
-              transition-all
+              text-text
             "
-          >
+          />
 
-            <ChevronRight size={16} />
-
-          </button>
-
-        </div>
+        </button>
 
       </div>
 
-      {/* WEEK */}
+      {/* WEEK DAYS */}
 
       <div
         className="
           grid
+
           grid-cols-7
 
-          mb-3
+          gap-3
+
+          mb-4
         "
       >
 
         {weekDays.map((day) => (
 
           <div
+
             key={day}
 
             className="
-              text-center
+              h-10
 
-              text-[13px]
-              font-bold
+              flex
+              items-center
+              justify-center
+
+              text-sm
+              font-semibold
 
               text-textSecondary
             "
@@ -209,7 +331,6 @@ export function ScheduleCalendar({
             {day}
 
           </div>
-
         ))}
 
       </div>
@@ -219,99 +340,122 @@ export function ScheduleCalendar({
       <div
         className="
           grid
+
           grid-cols-7
 
-          gap-y-1
+          gap-3
         "
       >
 
-        {days.map((day) => {
-
-          const isCurrentMonth =
-            day.month() ===
-            currentMonth.month()
+        {days.map((item) => {
 
           const isSelected =
-            selected
-            &&
-            day.isSame(
-              selected,
-              "day",
-            )
+            selectedDate
+              ? dayjs(item.date)
+                  .format("YYYY-MM-DD")
+                ===
+                dayjs(selectedDate)
+                  .format("YYYY-MM-DD")
+              : false
 
           const isToday =
-            day.isSame(
-              dayjs(),
-              "day",
-            )
+            dayjs(item.date)
+              .format("YYYY-MM-DD")
+            ===
+            dayjs()
+              .format("YYYY-MM-DD")
 
           return (
 
             <button
-              key={day.toString()}
+
+              key={item.date.toISOString()}
+
+              disabled={!item.currentMonth}
 
               onClick={() =>
-                onSelect(
-                  day.toDate(),
-                )
+                onSelect(item.date)
               }
 
               className={`
-                h-[52px]
-                w-[52px]
+                h-[58px]
 
-                mx-auto
+                rounded-2xl
 
-                rounded-[16px]
-
-                text-[16px]
-                font-semibold
+                border
 
                 flex
                 items-center
                 justify-center
 
+                text-[16px]
+                font-semibold
+
                 transition-all
                 duration-200
 
-                ${
-                  isCurrentMonth
-                    ? "text-text"
-                    : `
-                      text-textSecondary
-                      opacity-40
-                    `
-                }
+                active:scale-[0.96]
 
                 ${
                   isSelected
                     ? `
                       bg-primary
-                      text-text
+
+                      border-primary
+
+                      text-white
 
                       shadow-lg
+                      ring-2
+                      ring-primary/30
                     `
-                    : `
-                      hover:bg-primary
-                      hover:text-text
-                    `
-                }
+                    : isToday
+                      ? `
+                        bg-primary/10
 
-                ${
-                  isToday
-                    ? `
-                      border
-                      border-primary
-                    `
-                    : ""
+                        border-primary/40
+
+                        text-primary
+                        ring-2
+                      ring-primary/30
+                      `
+                      : item.currentMonth
+                        ? `
+                          bg-surface1
+
+                          border-border
+
+                          text-text
+
+                          hover:bg-hover
+
+                          hover:border-primary
+
+                          hover:text-text
+
+                          hover:scale-[1.02]
+                        `
+                        : `
+                          bg-surface2
+
+                          border-border
+
+                          text-textMuted
+
+                          cursor-not-allowed
+
+                          opacity-60
+                        `
                 }
               `}
             >
 
-              {day.format("D")}
+              {
+                dayjs(item.date)
+                  .date()
+              }
 
             </button>
-
           )
         })}
 

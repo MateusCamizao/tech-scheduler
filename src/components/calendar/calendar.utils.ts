@@ -4,11 +4,23 @@ export function generateCalendar(
   currentMonth: dayjs.Dayjs,
 ) {
 
+  /*
+  |----------------------------------------------------------------------
+  | MONTH LIMITS
+  |----------------------------------------------------------------------
+  */
+
   const startOfMonth =
     currentMonth.startOf("month")
 
   const endOfMonth =
     currentMonth.endOf("month")
+
+  /*
+  |----------------------------------------------------------------------
+  | CALENDAR LIMITS
+  |----------------------------------------------------------------------
+  */
 
   const startDate =
     startOfMonth.startOf("week")
@@ -16,14 +28,22 @@ export function generateCalendar(
   const endDate =
     endOfMonth.endOf("week")
 
-  const days = []
+  /*
+  |----------------------------------------------------------------------
+  | DAYS
+  |----------------------------------------------------------------------
+  */
+
+  const days: dayjs.Dayjs[] = []
 
   let date = startDate
 
   while (
+
     date.isBefore(endDate)
     ||
     date.isSame(endDate, "day")
+
   ) {
 
     days.push(date)
