@@ -69,7 +69,7 @@ export function Sidebar() {
         </NavLink>
 
         <NavLink
-          to="/agendamento"
+          to="/schedule"
           className={({ isActive }) =>
             `
             flex
@@ -113,7 +113,7 @@ export function Sidebar() {
         </NavLink>
 
         <NavLink
-          to="/confirmacao"
+          to="/settings"
           className={({ isActive }) =>
             `
             flex
@@ -131,7 +131,7 @@ export function Sidebar() {
           }
         >
           <Settings size={20} />
-          Confirmação
+          Settings
         </NavLink>
 
       </nav>

@@ -4,7 +4,7 @@ export function Confirmation() {
   return (
     <PrivateLayout>
       <h1 className="text-3xl font-bold">
-        Confirmação
+        Settings
       </h1>
     </PrivateLayout>
   )

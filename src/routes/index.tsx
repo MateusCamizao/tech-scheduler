@@ -8,6 +8,7 @@ import { Admin } from "@/pages/Admin"
 
 import { PrivateRoute } from "./PrivateRoute"
 import { PublicRoute } from "./PublicRoute"
+import { ScheduleSuccess } from "@/pages/ScheduleSuccess/index"
 
 export function AppRoutes() {
   return (
@@ -25,7 +26,12 @@ export function AppRoutes() {
         />
 
         <Route
-          path="/agendamento"
+          path="/schedule/success"
+          element={<ScheduleSuccess />}
+        />
+
+        <Route
+          path="/schedule"
           element={
             <PrivateRoute>
               <Schedule />
@@ -34,7 +40,7 @@ export function AppRoutes() {
         />
 
         <Route
-          path="/confirmacao"
+          path="/settings"
           element={
             <PrivateRoute>
               <Confirmation />
