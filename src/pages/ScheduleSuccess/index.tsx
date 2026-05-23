@@ -243,10 +243,7 @@ export function ScheduleSuccess() {
                 "
               >
                 {
-                  selectedDate
-                    ?.toLocaleDateString(
-                      "pt-BR",
-                    )
+                  selectedDate ? new Date(selectedDate).toLocaleDateString("pt-BR"): ""
                 }
               </strong>
 

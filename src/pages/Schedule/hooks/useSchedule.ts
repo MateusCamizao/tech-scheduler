@@ -89,7 +89,7 @@ export function useSchedule() {
 
     if (validationError) {
 
-      alert(validationError)
+      validationError
 
       return
     }
