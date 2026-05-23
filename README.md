@@ -1,73 +1,103 @@
-# React + TypeScript + Vite
+# Auto de Agendamentos — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend do sistema de autoatendimento para agendamento de reuniões.
 
-Currently, two official plugins are available:
+O projeto foi desenvolvido utilizando React + TypeScript + TailwindCSS, com foco em:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- experiência moderna
+- layout premium
+- responsividade
+- escalabilidade
+- componentização
+- integração futura com APIs
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Objetivo do Frontend
 
-## Expanding the ESLint configuration
+O frontend tem como objetivo permitir que o cliente:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- visualize horários disponíveis
+- escolha datas
+- selecione duração da reunião
+- realize agendamentos
+- confirme informações
+- visualize resumo do agendamento
+- futuramente reagende ou cancele reuniões
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Tudo isso em uma interface moderna e intuitiva.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# Tecnologias Utilizadas
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Core
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- React
+- TypeScript
+- Vite
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## Estilização
+
+- TailwindCSS
+
+---
+
+## Roteamento
+
+- React Router DOM
+
+---
+
+## Datas
+
+- Dayjs
+
+---
+
+## Ícones
+
+- Lucide React
+
+---
+
+# Estrutura Atual do Projeto
+
+
+
+```bash
+src/
+│
+├── components/
+│   ├── calendar/
+│   │   ├── ScheduleCalendar.tsx
+│   │   ├── TimeSlots.tsx
+│   │   ├── DurationSelector.tsx
+│   │
+│   ├── layout/
+│   │   ├── PublicLayout.tsx
+│   │   ├── PrivateLayout.tsx
+│   │
+│   ├── ui/
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   ├── Input.tsx
+│
+├── contexts/
+│   ├── AuthContext.tsx
+│
+├── pages/
+│   ├── Home/
+│   ├── Login/
+│   ├── Schedule/
+│   ├── Admin/
+│
+├── routes/
+│
+├── styles/
+│
+├── App.tsx
+├── main.tsx
+
