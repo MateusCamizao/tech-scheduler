@@ -1,6 +1,9 @@
 import {
   ReactNode,
 } from "react"
+import {
+  Outlet,
+} from "react-router-dom"
 
 import {
   Sidebar,
@@ -63,7 +66,7 @@ export function AdminLayout({
         >
 
           {children}
-
+          <Outlet />
         </div>
 
       </main>

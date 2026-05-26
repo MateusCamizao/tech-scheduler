@@ -1,9 +1,7 @@
 import {
-
   Eye,
   RotateCcw,
   Trash2,
-
 } from "lucide-react"
 
 type Props = {
@@ -15,7 +13,7 @@ type Props = {
   onCancel?: () => void
 }
 
-export function ScheduleActions({
+export function SchedulesActions({
 
   onView,
   onReschedule,
@@ -23,7 +21,7 @@ export function ScheduleActions({
 
 }: Props) {
 
-  const actionClass = `
+  const baseClass = `
     w-[42px]
     h-[42px]
 
@@ -50,81 +48,53 @@ export function ScheduleActions({
       className="
         flex
         items-center
-
         gap-2
       "
     >
 
-      {/* VIEW */}
-
       <button
-
         aria-label="Visualizar"
-
         onClick={onView}
-
         className={`
-          ${actionClass}
+          ${baseClass}
+
+          text-text
 
           hover:border-primary
+          hover:text-primary
         `}
       >
-
-        <Eye
-          size={18}
-          className="
-            text-text
-          "
-        />
-
+        <Eye size={18} />
       </button>
 
-      {/* RESCHEDULE */}
-
       <button
-
         aria-label="Reagendar"
-
         onClick={onReschedule}
-
         className={`
-          ${actionClass}
+          ${baseClass}
+
+          text-warningText
 
           hover:border-warningBorder
+          hover:bg-warningBg
         `}
       >
-
-        <RotateCcw
-          size={18}
-          className="
-            text-warningText
-          "
-        />
-
+        <RotateCcw size={18} />
       </button>
 
-      {/* CANCEL */}
-
       <button
-
         aria-label="Cancelar"
-
         onClick={onCancel}
-
         className={`
-          ${actionClass}
+          ${baseClass}
+
+          text-dangerText
 
           hover:border-dangerBorder
+          hover:bg-dangerBg
         `}
       >
-
-        <Trash2
-          size={18}
-          className="
-            text-dangerText
-          "
-        />
-
+        <Trash2 size={18} />
       </button>
 
     </div>

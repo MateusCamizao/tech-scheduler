@@ -54,7 +54,8 @@ export function ScheduleSuccess({
       className="
         w-full
         max-w-[760px]
-
+        pt-40
+        
         mx-auto
       "
     >

@@ -66,7 +66,7 @@ const statusMap = {
   },
 }
 
-export function ScheduleStatus({
+export function SchedulesStatus({
   status,
 }: Props) {
 
